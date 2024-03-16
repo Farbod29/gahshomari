@@ -50,18 +50,18 @@ export default function Home() {
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-3">
         <div className="text-center">
           <div className="text-center">
-            <h2> Iranian Pahlavi کورش کبیر</h2>
+            <h2> Iranian Date Pahlavi (Cyrus the greatest) کورش کبیر</h2>
             <p>{dates.pahlaviDate}</p>
           </div>
           <div className="text-center">
-            <h2>Iranian دیاکو </h2>
+            <h2>Iranian (Median Empire) دیاکو </h2>
             <p>{dates.IranianDiako}</p>
           </div>
-          <h2>European</h2>
+          <h2>European Date</h2>
           <p>{dates.europeanDate}</p>
         </div>
         <div className="text-center">
-          <h2>Iranian (شمسی) مهاجرت پیامبر مسلمانان </h2>
+          <h2>Iranian Date (شمسی) مهاجرت پیامبر مسلمانان </h2>
           <p>{dates.jalaliDate}</p>
         </div>
       </div>

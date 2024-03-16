@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${iranNastaliqFontFamily.variable}`}>
-      <body className={'font-IranNastaliq'}>{children}</body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }

@@ -8,7 +8,7 @@ const config: Config = {
   ],
   theme: {
     fontFamily: {
-      IranNastaliq: ['var(--font-IranNastaliq)'],
+      montserrat: ['var(--font-montserrat)'],
     },
     extend: {
       backgroundImage: {

@@ -1,0 +1,340 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* * {
+  break-inside: avoid;
+} */
+
+@layer base {
+  button:disabled {
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  .clip-your-needful-style {
+    clip-path: ellipse(100% 100% at 50% 0%);
+  }
+}
+
+@layer components {
+  /* Add your custom styles below */
+  .time-slot {
+    @apply flex h-12 w-full items-center justify-between; /* h-12 for 3rem or 48px height */
+  }
+
+  .time-slot.selected {
+    @apply border border-red-500;
+  }
+
+  .time-selector-container {
+    @apply flex flex-col items-center justify-center p-4;
+  }
+
+  .time-scroll-view {
+    @apply flex h-[250px] flex-col items-center overflow-y-scroll;
+  }
+
+  .price {
+    @apply ml-4 text-lg font-bold;
+  }
+
+  .selected-time {
+    @apply absolute mt-4 text-lg font-bold;
+  }
+
+  .menu-button {
+    @apply border-b-4 px-2 py-10 font-semibold;
+  }
+
+  .menu-button:hover {
+    @apply border-[#c62c2c] text-[#c62c2c];
+  }
+
+  .t-container {
+    @apply bg-gray-500;
+  }
+
+  .orderButtons {
+    @apply mt-3 rounded-lg border bg-white p-[12px];
+  }
+
+  .table {
+    @apply mx-4 my-24 flex border-collapse justify-center overflow-hidden;
+    box-shadow: 0 2px 15px;
+    /* border-radius: 12px 12px 12px 12px; */
+    font-family: 'Open Sans', Sans-serif;
+  }
+
+  .th {
+    @apply uppercase;
+
+    font-family: 'Open Sans', Sans-serif;
+    text-transform: uppercase;
+  }
+
+  .td {
+    @apply items-center justify-center px-6 py-4 align-middle text-sm text-gray-500;
+  }
+}
+
+/* //   `rounded-lg border bg-white p-[10px]  ${
+  props.callWaiterApiStatus ===
+    props.callWaiterApiStatusesEnum.PENDING && 'text-gray-500'
+}` */
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+.review-modal {
+  max-width: 50rem !important;
+}
+.setting-modal {
+  max-width: 64rem !important;
+  height: 80vh !important;
+  overflow-y: auto;
+}
+.add-waiter-modal {
+  max-width: 30rem !important;
+  overflow-y: auto;
+}
+.sk-ww-google-reviews {
+  height: 400px !important;
+  overflow-y: scroll !important;
+}
+/* .sk-ww-google-reviews  > div:nth-child(3){
+  overflow-y: scroll !important;
+} */
+.menu-types-wrap {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  text-align: center;
+  margin: 3rem 0;
+}
+.menu-type-item,
+.menu-type-item img {
+  cursor: pointer;
+}
+.review-wrap {
+  /* overflow-y: scroll; */
+  height: 200px;
+}
+.extras-wrap {
+  max-height: 400px;
+  overflow: auto;
+}
+.header-search-section {
+  position: relative;
+}
+.suggestions-wrap {
+  background: #fff;
+
+  padding: 0.5rem;
+  width: 100%;
+}
+.suggestion-item {
+  cursor: pointer;
+  display: flex;
+}
+.suggestion-item:hover {
+  background-color: #eeeeeee0;
+}
+.suggestion-item img {
+  width: 32px;
+}
+.suggestion-item span {
+  margin-left: 0.5rem;
+}
+.search-modal .suggestions-parent {
+  width: calc(100% - 78px);
+  border: 1px solid #d0c5c5;
+  height: 200px;
+  overflow: auto;
+}
+.suggestions-parent {
+  background: #fff;
+  width: calc(100% - 90px);
+  z-index: 999;
+  position: absolute;
+  margin-left: 2px;
+}
+.search-btn-mob {
+  display: none;
+}
+@media (max-width: 768px) {
+  .select-delivery-type img {
+    width: 100% !important;
+    height: auto !important;
+  }
+  .header-search-section {
+    display: none;
+  }
+  .search-btn-mob {
+    display: block;
+  }
+  .working-hour-items {
+    flex-direction: column;
+  }
+}
+.working-hour-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.working-hours-wrap {
+  padding-left: 1rem;
+}
+.category-button {
+  margin-top: 1.7rem;
+  white-space: nowrap;
+}
+.close-btn-modal {
+  position: absolute;
+  top: 2px;
+  left: 10px;
+}
+.close-btn {
+  position: absolute;
+  top: 0px;
+  left: 10px;
+  font-size: 1.5rem;
+}
+.working-hour-items {
+  display: flex;
+}
+
+.select-delivery-type {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.select-delivery-type img {
+  width: 300px;
+}
+.restaurant-icon {
+  height: 265px;
+  width: 350px;
+}
+.customer-info {
+  background-color: #fff;
+  padding: 1rem;
+}
+.logout-btn-mobile {
+  display: none;
+}
+@media (max-width: 768px) {
+  .logout-btn-mobile {
+    display: block;
+  }
+  .logout-btn {
+    display: none;
+  }
+}
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: 0.5em 0 0.75em;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: 0.35em;
+}
+
+table th,
+table td {
+  padding: 0.625em;
+  text-align: center;
+}
+
+table th {
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: 0.625em;
+  }
+
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 0.8em;
+    text-align: right;
+  }
+
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+.order-items {
+  overflow-y: auto;
+}
+.review-wrap .review-img {
+  width: 50%;
+  margin: auto;
+}
+.review-wrap {
+  padding-top: 2rem;
+  overflow: hidden;
+}
+.review-modal-z-index {
+  z-index: 1000;
+}

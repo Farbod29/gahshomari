@@ -16,8 +16,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${iranNastaliqFontFamily.variable}`}>
-      <body className={'font-IranNastaliq'}>{children}</body>
+    <html lang="en" className={`${iranNastaliqFontFamily}`}>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }
