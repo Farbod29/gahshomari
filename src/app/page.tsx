@@ -18,7 +18,6 @@ export default function Home() {
 
   useEffect(() => {
     const today = new Date();
-
     setDates({
       europeanDate: toPersianNums(today.toLocaleDateString('en-GB')),
       jalaliDate: convertToJalali(today),
@@ -53,7 +52,7 @@ export default function Home() {
 
   function convertToIraniMithra(date: Date) {
     const { jy, jm, jd } = jalaali.toJalaali(date);
-    const IraniMithraYear = jy + 6359; // As 1403 is to 7762, therefore jy + (7762 - 1403)
+    const IraniMithraYear = jy + 6359;
     return toPersianNums(
       `${IraniMithraYear}/${jm < 10 ? '0' + jm : jm}/${jd < 10 ? '0' + jd : jd}`
     );
@@ -61,7 +60,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-gray-600">
-      <div className="space-y-8 rounded-lg p-8 shadow-2xl bg-blue-200 w-[400px] ">
+      <div className="space-y-8 rounded-lg p-8 shadow-2xl bg-blue-200 w-[400px]">
         <div className="text-center">
           <h1 className="mb-9 text-8xl text-blue-900">گاه شمار ایرانی</h1>
           <div className="space-y-6">
