@@ -1,83 +1,93 @@
-'use client'
+'use client';
 import { useEffect, useState } from 'react';
 import jalaali from 'jalaali-js';
-// import  '../'' // Your Tailwind CSS file
+
+function toPersianNums(numString: string) {
+  const persianNums = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+  return numString.replace(/\d/g, (x) => persianNums[parseInt(x)]);
+}
 
 export default function Home() {
   const [dates, setDates] = useState({
     europeanDate: '',
     jalaliDate: '',
-    pahlaviDate: '',
+    pahlaviYear: '',
     IranianDiako: '',
+    IraniMithra: '',
   });
 
   useEffect(() => {
     const today = new Date();
 
     setDates({
-      europeanDate: today.toLocaleDateString('en-GB'),
+      europeanDate: toPersianNums(today.toLocaleDateString('en-GB')),
       jalaliDate: convertToJalali(today),
-      pahlaviDate: convertToPahlavi(today),
+      pahlaviYear: convertToPahlavi(today),
       IranianDiako: convertToIranianDiako(today),
+      IraniMithra: convertToIraniMithra(today),
     });
   }, []);
 
-  function convertToJalali(date) {
+  function convertToJalali(date: Date) {
     const { jy, jm, jd } = jalaali.toJalaali(date);
-    return `${jy}/${jm < 10 ? '0' + jm : jm}/${jd < 10 ? '0' + jd : jd}`;
+    return toPersianNums(
+      `${jy}/${jm < 10 ? '0' + jm : jm}/${jd < 10 ? '0' + jd : jd}`
+    );
   }
 
-  function convertToPahlavi(date) {
+  function convertToPahlavi(date: Date) {
     const { jy, jm, jd } = jalaali.toJalaali(date);
-    const pahlaviYear = jy + 1180;
-    return `${pahlaviYear}/${jm < 10 ? '0' + jm : jm}/${
-      jd < 10 ? '0' + jd : jd
-    }`;
+    const pYear = jy + 1180;
+    return toPersianNums(
+      `${pYear}/${jm < 10 ? '0' + jm : jm}/${jd < 10 ? '0' + jd : jd}`
+    );
   }
 
-  function convertToIranianDiako(date) {
+  function convertToIranianDiako(date: Date) {
     const { jy, jm, jd } = jalaali.toJalaali(date);
     const IranianDiako = jy + 1321;
-    return `${IranianDiako}/${jm < 10 ? '0' + jm : jm}/${
-      jd < 10 ? '0' + jd : jd
-    }`;
+    return toPersianNums(
+      `${IranianDiako}/${jm < 10 ? '0' + jm : jm}/${jd < 10 ? '0' + jd : jd}`
+    );
+  }
+
+  function convertToIraniMithra(date: Date) {
+    const { jy, jm, jd } = jalaali.toJalaali(date);
+    const IraniMithraYear = jy + 6359; // As 1403 is to 7762, therefore jy + (7762 - 1403)
+    return toPersianNums(
+      `${IraniMithraYear}/${jm < 10 ? '0' + jm : jm}/${jd < 10 ? '0' + jd : jd}`
+    );
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center">
-      <div className="space-y-8 rounded-lg bg-red-600 p-8 shadow-lg">
+    <main className="flex min-h-screen items-center justify-center bg-gray-600">
+      <div className="space-y-8 rounded-lg p-8 shadow-2xl bg-blue-200 w-[400px] ">
         <div className="text-center">
-          <h1 className="mb-4 text-3xl font-bold text-gray-800">
-            Persian Calendar Gah Shomari (ایرانی گاه شماری)
-          </h1>
-          <div className="space-y-4">
+          <h1 className="mb-9 text-8xl text-blue-900">گاه شمار ایرانی</h1>
+          <div className="space-y-6">
             <div>
-              <h2 className="text-xl font-semibold text-red-700 bg-red-600">
-                Iranian Date Pahlavi (کورش کبیر)
-              </h2>
-              <p className="text-lg text-gray-600 nastaliq-font">
-                {dates.pahlaviDate}
-              </p>
+              <h2 className="text-7xl mt-20 mb-4 text-blue-900">کورش کبیر</h2>
+              <p className="text-5xl text-blue-700">{dates.pahlaviYear}</p>
             </div>
             <div>
-              <h2 className="text-xl font-semibold text-gray-700">
-                Iranian (Median Empire) (امپراطوری ماد دیاکو)
+              <h2 className="text-6xl mt-8 text-blue-900">
+                امپراطوری ماد دیاکو
               </h2>
-              <p className="text-lg text-gray-600">{dates.IranianDiako}</p>
+              <p className="text-5xl text-blue-700">{dates.IranianDiako}</p>
             </div>
             <div>
-              <h2 className="text-xl font-semibold text-gray-700">
-                European Date
-              </h2>
-              <p className="text-lg text-gray-600">{dates.europeanDate}</p>
+              <h2 className="text-6xl text-blue-900">میلادی</h2>
+              <p className="text-5xl text-blue-700">{dates.europeanDate}</p>
             </div>
             <div>
-              <h2 className="text-xl font-semibold text-gray-700">
-                Iranian Date (Shamsi) (مهاجرت پیامبر مسلمانان)
-              </h2>
-              <p className="text-lg text-gray-600">{dates.jalaliDate}</p>
+              <h2 className="text-6xl text-blue-900">شمسی</h2>
+              <p className="text-5xl text-blue-700">{dates.jalaliDate}</p>
             </div>
-          </div> */}
+            <div>
+              <h2 className="text-6xl text-blue-900">ایرانی میترا</h2>
+              <p className="text-5xl text-blue-700">{dates.IraniMithra}</p>
+            </div>
+          </div>
         </div>
       </div>
     </main>
